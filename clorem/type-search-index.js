@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"com.clorem.db","l":"Clorem"},{"p":"com.clorem.db","l":"CloremDatabaseException"},{"p":"com.clorem.db","l":"Database"},{"p":"com.clorem.db","l":"Query"},{"p":"com.clorem.db","l":"Reasons"}]
