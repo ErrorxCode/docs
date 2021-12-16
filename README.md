@@ -15,3 +15,9 @@ Documentation link : https://errorxcode.github.io/docs/clorem/index.html
 This is an android library through which you can use instagram programatically.You can say that this is a well optimize, will featured java wrapper of "Instagram graph API".You can direct messages, add stories, post photos, scrapping profiles and can do many more things with this library.
 
 Documentation link : https://errorxcode.github.io/docs/easyinsta/index.html
+
+
+### 4) [Clorastore](https://github.com/ErrorxCode/ClorastoreDB)
+This is a local implementation of cloud firestore for android. Clorastore stores data in form of documents as firestore and mongoDB does. The main aim of making this database is to make developer life easier. Programmer does not need to know that stupid SQL queries for just simple CRUD operations. This is the second easiest database ever made for android after CloremDB. Although, this is similar to those of Firestore and Mongo DB but also differ in some ways. In Clorastore, collections can a contain collection whereas document can't. Each document is limited to 10 MB.
+
+Documentation link : https://errorxcode.github.io/docs/clorastore/index.html
