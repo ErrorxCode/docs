@@ -21,3 +21,10 @@ Documentation link : https://errorxcode.github.io/docs/easyinsta/index.html
 This is a local implementation of cloud firestore for android. Clorastore stores data in form of documents as firestore and mongoDB does. The main aim of making this database is to make developer life easier. Programmer does not need to know that stupid SQL queries for just simple CRUD operations. This is the second easiest database ever made for android after CloremDB. Although, this is similar to those of Firestore and Mongo DB but also differ in some ways. In Clorastore, collections can a contain collection whereas document can't. Each document is limited to 10 MB.
 
 Documentation link : https://errorxcode.github.io/docs/clorastore/index.html
+
+
+### 4) [Clorabase](https://github.com/ErrorxCode/Clorabase)
+Clorabase is a free and backend alternative for android apps. Clorabase is mostly made for apps which hardly requires online database and other android backend features. Although, this can also be used for the hybrid apps which often uses database and other features but considering firebase for that will be more beneficial. As the limits or quota are based on the assumption that the app will not fully depend on the server. The biggest advantage of using this instead of firebase for small apps is that you don't have to build an account in order to use clorabase. Yes, this service does not need account.
+
+Documentation link : https://errorxcode.github.io/docs/clorabase/index.html
+
