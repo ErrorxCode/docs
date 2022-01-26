@@ -32,6 +32,20 @@ In module **build.gradle**
 	}
 ```
 
+**Only add if getting build error 👎**
+
+In your modeule build.gradle
+```
+packagingOptions {
+        resources.excludes.add("META-INF/*")
+}
+```
+
+in your module build.gradle
+```
+    implementation 'org.apache.httpcomponents:httpmime:4.3.1'
+```
+
 ### When to use this instead of firebase
 Clorabase is made for apps that hardly or rearely communicates to the backend. Apps which rely totally on backend-database should not use this, instead they must go for [firebase](https://firebase.google.com/) because clorabase only offers 10MB of data to be stored in database. If your app is native application and only store some data on database then you should consider using this. See the table below to understand more crearly.
 
