@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"com.sync.db","l":"SyncDB.Callback"},{"p":"com.sync.db","l":"Query"},{"p":"com.sync.db","l":"Syncable"},{"p":"com.sync.db","l":"SyncDB"},{"p":"com.sync.db","l":"SyncDB.SyncedDataManager"}];updateSearchResults();
