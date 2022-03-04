@@ -29,7 +29,7 @@ Clorabase is a free and backend alternative for android apps. Clorabase is mostl
 Documentation link : https://errorxcode.github.io/docs/clorabase/index.html
 
 
-### 6) [SyncDB](https://github.com/ErrorxCode/SyncDB)
-A new-type modern NoSql database where developer dosn't need to bother about inserting or updating data. This database automatically sync data with the database
-Documentation link : https://errorxcode.github.io/docs/syncdb/index.html
+### 6) [FloraDB](https://github.com/ErrorxCode/FloraDB)
+A modern No-Sql database written in java. World's 1st static database that can be used with just one utility class.
+Documentation link : https://errorxcode.github.io/docs/floradb/index.html
 
