@@ -35,7 +35,7 @@ In module **build.gradle**
 ```
 
 
-### When to use this instead of firebase
+### Why clorabase ? Why not fiebase ?
 Clorabase and firebase are two most popular SaaS for android apps. One can deside what to use ant at what time through the below table.
 
 | Usage                     | Clorabase | Firebase |
@@ -48,6 +48,8 @@ Clorabase and firebase are two most popular SaaS for android apps. One can desid
 | In-app update             | Yes        | Absent   |
 | Authentication             | Absent | Yes|
 
+
+?> ⚠️**In clorabase public drive, your app package name acts as a key**. Don't share it to anyone or he/she can have access on your clorabase project.
 
 #### Example project
 [Clorabase start-up]()
