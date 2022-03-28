@@ -9,10 +9,10 @@ It is common to find & fix bugs after releasing app to production. However, you 
 ### Initializing the class
 You just have to initialize the class and rest the library will take care. Its recommanded to initialize this in **Application's** or else in **LAUNCHER** activity `onCreate()`.
 
-Use the static `init(Context,Link)` method of class `ClorabaseInAppUpdate` passing context and a link from where user can update your app.
-```java
-ClorabaseInAppUpdate.init(this);
+Use the static `init(Context,String,String)` method of class `ClorabaseInAppUpdate`.
+ClorabaseInAppUpdate.init(this,TOKEN,PROJECT_ID);
 ```
+You can get TOKEN & PROJECT_ID once you have configured in-app updates in console.
 
 ### Adding app in clorabase
 For this to work, you have to first add the app in clorabase in-app updates. You can do this easily through the console by clicking the floating button. See the picture below:
