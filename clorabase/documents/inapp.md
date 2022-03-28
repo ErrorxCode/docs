@@ -14,7 +14,7 @@ public class MainActivity extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        ClorabaseInAppMessaging.init(this);
+        ClorabaseInAppMessaging.init(this,TOKEN,APP_ID);
     }
 }
 ```
