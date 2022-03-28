@@ -1,8 +1,7 @@
 - Database
 
   - [Introduction](documents/database#clorabase-database)
-  - [Writing](documents/database#writing-to-database)
-  - [Reading](documents/database#reading-from-database)
+  - [Working with database](documents/database#working-with-database)
   - [Managing](documents/database#managing-database)
 
 - Storage
