@@ -9,7 +9,6 @@
   - [Introduction](documents/storage#clorabase-storage)
   - [Uploading](documents/storage#uploading-file-to-storage)
   - [Downloading](documents/storage#downloading-file-from-storage)
-  - [Deleting](documents/storage#deleting-file)
   - [Managing](documents/storage#managing-storage)
 
 
