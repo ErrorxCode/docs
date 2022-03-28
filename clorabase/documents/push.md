@@ -15,7 +15,10 @@ public class MainActivity extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        ClorabasePushMessaging.init(this);
+        ClorabasePushMessaging.init(this, data -> {
+            // Called when notification is clicked          
+            // data will be always null until it is implemented in console          
+        });
     }
 }
 ```
