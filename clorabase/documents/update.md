@@ -10,6 +10,7 @@ It is common to find & fix bugs after releasing app to production. However, you 
 You just have to initialize the class and rest the library will take care. Its recommanded to initialize this in **Application's** or else in **LAUNCHER** activity `onCreate()`.
 
 Use the static `init(Context,String,String)` method of class `ClorabaseInAppUpdate`.
+```
 ClorabaseInAppUpdate.init(this,TOKEN,PROJECT_ID);
 ```
 You can get TOKEN & PROJECT_ID once you have configured in-app updates in console.
