@@ -1,5 +1,5 @@
 # Clorabase Database
-Clorabase Database is an open-source, flexible, scalable database for android apps. It offers offline support for Android apps so you can build responsive apps that work regardless of network latency or Internet connectivity. It is NoSql key-value typed database. See [CloremDB](https://github.com/ErrorxCode/CloremDB) for more info about the database.
+Clorabase Database is an open-source, flexible, serverless database for android apps. It offers offline support for Android apps so you can build responsive apps that work regardless of network latency or Internet connectivity. It is NoSql key-value typed database based on [CloremDB](https://github.com/ErrorxCode/CloremDB). Befour using this database, have a look at **CloremDB**
 
 ## Key features
 - No account is needed
@@ -8,68 +8,72 @@ Clorabase Database is an open-source, flexible, scalable database for android ap
 
 ### Initializing the class.
 *First of all, add your app to clorabase from the console. Go to the "Database" section and click the '+' icon to add a new app*.
-To use any method of the class, first, you have to initialize it. Just create its reference from the default constructor and it will automatically be initialized.
+After that, just initialize the database and class as below :-
 
 ```java
-ClorabaseDatabase clorabase = new ClorabaseDatabase(this,YOUR_TOKEN,YOUR_PROJECT_ID);
+ClorabaseDatabase db = ClorabaseDatabase.getInstanceAsync(this,DB_ID,TOKEN);
 ```
-You can get token and project id from the "Credentials section" of the console.
-
-### Working with database
-Clorabase database is different from all other databases. There is no separate read/write operation on the database, instead, you perform those operations on your local database and it is synced with our server by a method call. See the below **example**:
-
-Please refer to [CloremDB](https://github.com/ErrorxCode/CloremDB) for database operations and relating info.
+You can get token and project DB_ID from the "Credentials section" of the console.
+>? Note : Use `getInstance()` method if you are initializing the database just before using it. `getInstanceAync()` must be used to initialize as soon as app/activity starts.
 
 
-#### Asyncronously
-It is recommanded to use this approch when your data is big or taking time to fetch/push data.
+### Writing data
+Let's insert a new user into `users` node :
 ```java
-clorabase.getDatabaseAsync(new ClorabaseDatabase.DatabaseCallback() {  // Fetches data from the server
-    @Override
-    public void onCreated(Node db) {
-        db.put("foo","bar");
-        String bar = db.getString("foo", null);
-        ...          // Your database operation here
-        db.commit(); // This is important to save the data
-        clorabase.syncServer(new DriveHelper.Callback() {  // Sends back the new data
-            @Override
-            public void onSuccess() {
-                // Success
-            }
-            
-            @Override
-            public void onError(Exception e) {
-                // Error
-            }
-        });
-    }
-    @Override
-    public void onError(Exception e) {
-        // Error
-    }
-});
+Map<String,Object> data = new HashMap<>();
+data.put("name","John");
+data.put("age",25);
+data.put("is_married",false);
+
+db.node("users").setData(data).addOnSuccessListener(v -> {
+    // Success
+}).addOnFailureListener(e -> {
+    // Failure
+});               
 ```
-#### Syncronously
-You should generally make use of this approch. Make sure it is not making your UI unresponsive.
+A data can also include a POJO, just put that object in the `Map`
 ```java
-try {
-    clorabase.syncDatabase();  // Blocks until the sync is complete.
-    Node db = clorabase.getDatabase();
-    ...                         // Do something with the database.
-    db.commit();                // Commit the changes to the database.
-    clorabase.syncServer(null);  // This is async call
-} catch (Exception e) {
-   // Error occured on first line
+Task<String> task = db.node("users").setData(Collections.singletonMap("user1",new User("jhon",25,false)));
+```
+
+The result will be like this :- 
+```json
+{
+  "users": {
+    "user1": {
+      "name": "John",
+      "age": 30,
+      "is_married": false
+    }
+  }
 }
 ```
-As you have seen, here we work with our local database and sync it with our server. the workflow is as follows :
-- We fetch data from the server through `syncDatabase()` (Optional)
-- We work on our database usually as we do in the local database `getDatabase()`
-- We push that changed data to the server using `syncServer()` (Optional)
+For lists, use `addItem(key,item)` method to add a single item to the list. The 'key' is the name of the list.
+### Reading data
+To read data from database, use `getData()` method on the **node** where it was inserted.
+```java
+db.node("users").getData().addOnSuccessListener(data -> {
+    Map<String, Object> map = data;
+    // here is your data
+}).addOnFailureListener(e -> {
+    // Failed ! check the error
+});
+```
 
-What actually clorabase does is that it just download & upload your database. When we call `syncDatabase()`, it syncs our local database with the server so that our local database now has data which server also has. Once we make changes to the local database, calling `sync server()` will sync the server database with our local database thus maintaining the balance & equality in data in both client and server. Although, it is not necessary to fetch & push data every time. Do it only when required.
+### Deleting data
+To delete a node, go to its parent node and call `delete()`method. To delete a field in a node, just put its value to `null`
+```java
+db.node("users").delete("user1");  // To delete whole node i.e 'user1'
+db.node("users").node("user1").setData(Collections.singletonMap("name", null));  // To remove a perticular field from a node i.e name
+db.node("product").removeItem("items",2);  // To remove a item from a list
+```
 
-For example, an online TODO app should fetch data `syncDatabase()` only on the first-time starting or login the app and can push `syncServer()` data on the button click or really.
+### Working with lists
+You can also instert lists in the database. Like so:
+```java
+db.node("product").setData(Collections.singletonMap("toys",toysList));
+```
+
 
 ### Managing database
 You can manage your database from the console. Just go to 'Database' & add your app.
