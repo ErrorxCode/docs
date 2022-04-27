@@ -14,7 +14,7 @@ After that, just initialize the database and class as below :-
 ClorabaseDatabase db = ClorabaseDatabase.getInstanceAsync(this,DB_ID,TOKEN);
 ```
 You can get token and project DB_ID from the "Credentials section" of the console.
->? Note : Use `getInstance()` method if you are initializing the database just before using it. `getInstanceAync()` must be used to initialize as soon as app/activity starts.
+?> Note : Use `getInstance()` method if you are initializing the database just before using it. `getInstanceAync()` must be used to initialize as soon as app/activity starts.
 
 
 ### Writing data
@@ -31,10 +31,12 @@ db.node("users").setData(data).addOnSuccessListener(v -> {
     // Failure
 });               
 ```
+
 A data can also include a POJO, just put that object in the `Map`
 ```java
 Task<String> task = db.node("users").setData(Collections.singletonMap("user1",new User("jhon",25,false)));
 ```
+?> **TIP:** Every database operation method returns a `Task`. See tasks [documentation](https://developers.google.com/android/guides/tasks) for more info.
 
 The result will be like this :- 
 ```json
@@ -69,10 +71,59 @@ db.node("product").removeItem("items",2);  // To remove a item from a list
 ```
 
 ### Working with lists
+#### Creating list
 You can also instert lists in the database. Like so:
 ```java
 db.node("product").setData(Collections.singletonMap("toys",toysList));
 ```
+#### Adding items to the list
+```java
+db.node("product").addItem("toys","RC Helicopter");
+```
+
+#### Removing items from the list
+```java
+db.node("product").removeItem("toys",2);
+```
+
+### Querying data
+**[CloremDB](https://github.com/ErrorxCode/CloremDB)** (the database which clorabase use) provides powerful query engine for querying and sorting data. Please
+refer to [Querying data](https://github.com/ErrorxCode/CloremDB/wiki/Guide#custom-sql-like-query) documentation to understand the query.
+
+Suppose if your structure is like this:
+```JSON
+{
+  "users": {
+    "user1": {
+      "name": "John",
+      "age": 30,
+      "is_married": false
+    },
+    "user2": {
+      "name": "Mary",
+      "age": 25,
+      "is_married": true
+    },
+    "user3": {
+      "name": "Mike",
+      "age": 27,
+      "is_married": false
+    }
+  }
+}
+```
+To get all the users whose age is less then 30,
+```java
+db.node("users").query("Where age < 30").addOnCompleteListener(task -> {
+    if (task.isSuccessful()) {
+        List<Map<String, Object>> nodes = task.getResult();
+        // here are your results
+    } else {
+        // something went wrong
+    }
+});
+```
+**Note**: This must be called from grantparent node (the node which has the nested nodes that you want to fetch) i.e "users" in this case.
 
 
 ### Managing database
