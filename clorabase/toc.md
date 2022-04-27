@@ -1,8 +1,11 @@
 - Database
 
   - [Introduction](documents/database#clorabase-database)
-  - [Working with database](documents/database#working-with-database)
-  - [Managing](documents/database#managing-database)
+  - [Writing data](documents/database#writing-data)
+  - [Raading data](documents/database#reading-data)
+  - [Deleting data](documents/database#deleting-data)
+  - [Working with lists](documents/database#working-with-lists)
+  - [Querying data](documents/database#querying-data)
 
 - Storage
 
