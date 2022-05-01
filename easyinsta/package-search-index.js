@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.xcoder.easyinsta"},{"l":"com.xcoder.easyinsta.exceptions"},{"l":"com.xcoder.easyinsta.interfaces"}];updateSearchResults();
