@@ -140,3 +140,4 @@ After that, you can see a little info about your database. You can only delete t
 
 ### [Example](https://github.com/ErrorxCode/clorabase-sample)
 *That's all that you need to know about the database.*
+
