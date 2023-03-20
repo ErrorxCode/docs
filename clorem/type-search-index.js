@@ -1,1 +1,0 @@
-typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"db.clorabase.clorem","l":"BigQuery"},{"p":"db.clorabase.clorem","l":"Clorem"},{"p":"db.clorabase.clorem","l":"CloremDatabaseException"},{"p":"db.clorabase.clorem","l":"Node"},{"p":"db.clorabase.clorem","l":"Query"},{"p":"db.clorabase.clorem","l":"Reasons"}];updateSearchResults();
