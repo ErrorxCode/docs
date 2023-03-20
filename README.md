@@ -6,7 +6,7 @@
 Documentation link :  https://errorxcode.github.io/docs/utils/index.html
 
 ### 2) [CloremDB](https://github.com/ErrorxCode/CloremDB)
-This is implimentation of firebase realtime database as local database for android. CloremDB stores data in exact way as firebase does i.e in a JSON tree. Yes, this is again a no-sql database that stores data in key-value paires. The main aim of making this database is to make developer life easier. Programmer does not need to know that stupid SQL queries for just simple CRUD operations. This will be the easiest database ever made for android.
+CloremDB is a simple, robust and easy to use embedded NO-SQL database for java applications. The data is directly saved as objects in the database. You can directly put POJO's in the database and can organize them is different volume. Each volume is like a SQL table which contains objects (as rows). You can have unlimited number of volumes and objects in it.
 
 Documentation link : https://errorxcode.github.io/docs/clorem/index.html
 
