@@ -4,7 +4,6 @@
   - [Writing data](documents/database#writing-data)
   - [Raading data](documents/database#reading-data)
   - [Deleting data](documents/database#deleting-data)
-  - [Working with lists](documents/database#working-with-lists)
   - [Querying data](documents/database#querying-data)
 
 - Storage
@@ -12,7 +11,7 @@
   - [Introduction](documents/storage#clorabase-storage)
   - [Uploading](documents/storage#uploading-file-to-storage)
   - [Downloading](documents/storage#downloading-file-from-storage)
-  - [Managing](documents/storage#managing-storage)
+  - [Listing files](documents/storage#listing-files)
 
 
 
