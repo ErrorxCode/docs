@@ -15,7 +15,7 @@ public class MainActivity extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        ClorabasePushMessaging.init(this, data -> {
+        ClorabasePushMessaging.init(this,channel, data -> {
             // Called when notification is clicked          
             // data will be always null until it is implemented in console          
         });
@@ -29,6 +29,6 @@ To send a push notification, In the console, goto **Push messaging** option and 
 
 ![push.png](push.png)
 
-Here, **Package name** is the package name of the app to whome you want to send push notification. That app must have been initialized through the sdk method.
+Here, **channel** is the messaging channel on which you want to send push notification. That app must have been initialized through the sdk method.
 
 *That's all what you need to know about push notification*
