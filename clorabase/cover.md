@@ -1,6 +1,6 @@
 ![logo](favicon.png)
 
-# Clorabase<small>1.0</small>
+# Clorabase<small>2.0</small>
 
 > A account free backend for android apps.
 
