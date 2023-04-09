@@ -39,7 +39,10 @@ If the `user1` document already exists in that collection, **then it will update
 ?> **TIP:** Every database operation method returns a `Task`. See tasks [documentation](https://developers.google.com/android/guides/tasks) for more info.
 
 The structure created will be like this,
+
 ![image](https://user-images.githubusercontent.com/65817230/230773260-1a207a69-03e6-4c3a-9fca-d4f0bba305c3.png)
+
+
 You can also have a collection inside a collection, but not a collection or document inside a document.
 
 
