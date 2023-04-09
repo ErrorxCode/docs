@@ -14,7 +14,7 @@ public class MainActivity extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        ClorabaseInAppMessaging.init(this,TOKEN,APP_ID);
+        ClorabaseInAppMessaging.init(this,projectId,channel);
     }
 }
 ```
@@ -25,6 +25,6 @@ To send a In-app message, In the console goto **In-app messaging** option and fi
 
 ![in-app.png](inapp.png)
 
-Here, **Package name** is the package name of the app to whome you want to send In-app message. That app must have been initialized through the sdk method.
+Here, **Channel** is the name of the messaging channel on which you want to send In-app message. That app must have been initialized through the sdk method.
 
 *That's all what you need to know about in-app messaging*
