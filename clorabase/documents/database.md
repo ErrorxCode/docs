@@ -110,8 +110,47 @@ db.collection("users").query(data -> data.get("name").toString().startsWith("a")
 
 **Note** : You need to manually check for the `return` value of `data.get("age")`, as it could be null if some document does not contain that value.
 
-
 ## ClorographDB
-The documentation for this database is available [here](https://github.com/Clorabase/ClorographDB/wiki)
 
-*That's all that you need to know about the database.*
+First off all, read about the **Graphs & trees**  [here](https://github.com/Clorabase/ClorographDB/wiki)
+
+- To create a graph or tree
+```java
+RelationalGraph<Person> graph = new RelationalGraph<>();
+...
+...
+...
+db.createGraph(graph).addOnSuccessListener(createdGraph -> {  
+    // Graph created, must not be edited  
+}).addOnFailureListener(e -> {  
+    // Graph not created, check error  
+});
+```
+*The similar method is for tree too.*
+
+- To update a graph/tree
+```java
+db.updateTree("treeName", new OnCompleteCallback<Tree<Person>>() {  
+    @Override  
+  public void onFetched(Tree<Person> fetched) {  
+        // update the graph here  
+  }  
+  
+    @Override  
+  public void onUpdated() {  
+        // if the graph was updated  
+  }  
+  
+    @Override  
+  public void onFailure(Exception e) {  
+        // if there was an error  
+  }  
+});
+```
+*The similar method is for graph too.*
+
+Read more about this database [here](https://github.com/Clorabase/ClorographDB/wiki/user-guide)
+
+
+
+_That's all that you need to know about the database._
