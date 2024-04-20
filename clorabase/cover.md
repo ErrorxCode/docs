@@ -1,11 +1,12 @@
 ![logo](favicon.png)
 
-# Clorabase<small>2.0</small>
+# Clorabase<small>3.0</small>
 
-> A account free backend for android apps.
+> Turn your Github into a Backend
 
 - Simple and lightweight
-- No account needed
+- Easy, manageable and accessible
+- Uses Github API
 - Always free
 
 [Website](https://clorabase.netlify.app)
