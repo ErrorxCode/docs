@@ -36,6 +36,20 @@ In module **build.gradle**
 ```
 [![](https://jitpack.io/v/Clorabase/Clorabase.svg)](https://jitpack.io/#Clorabase/Clorabase)
 
+
+#### To generate a GitHub OAuth token
+1. Goto [Create token](https://github.com/settings/tokens/new)
+2. Select the 'Classic' token type and set the expiry to 'No expiration'
+3. Check the following in the scope sections:
+   - delete_repo
+   - repo
+4. Click generate.
+
+Now you can use this token to access the console and SDK.
+
+⚠️**NOTE: Never publish your code containing this token on GitHub, if you did, then the token will automatically deleted and your code will break**
+
+
 ### Documentation
 - [User guide](https://[docs.clorabase.tk](https://clorabase-docs.netlify.app/)
 
