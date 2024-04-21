@@ -6,14 +6,19 @@ Storage for Clorabase is built for app developers who need to store and serve us
 - Simple & easy SDK
 - Unlimited storage & uploads
 
+### Initialize the class
+```java
+ClorabaseStorage storage = clorabase.getStorage();
+```
+then with this object, we can:
 
-### Uploading file to storage
+### Upload file to storage
 To upload a file to the storage, use the `upload(String,File,Callback)` method.
 
-?> Tip: First move the file to your app external files directory and then pass the file from there to get read permission.
+?> Tip: Take care of the read/write permission, specually if you are targeting higher android versions
 
 ```java
-ClorabaseStorage.upload(projectId, file, new ClorabaseStorageCallback() {  
+storage.upload(projectId, file, new ClorabaseStorageCallback() {  
     @Override  
   public void onFailed(@NonNull Exception e) {  
         // check the error  
@@ -30,14 +35,14 @@ ClorabaseStorage.upload(projectId, file, new ClorabaseStorageCallback() {
   }  
 });
 ```
-?> **Pro Tip**: To organize your files, you can save each file name in database with respective collection and documents. 
-For example, If I wanna save all images from `user1`. I will create a list in this document which will hold all the images uploaded by this user.
+?> **Pro Tip**: To organize your files, you can save each file name in the database with the respective collection and documents. 
+For example, If I wanna save all images from `user1`. I will create a list in a document in database, that will hold referenfce (name/download_link) of the images uploaded by this user.
 Then you can retrieve them later.
 
-### Downloading file from storage
-To download a file from clorabase storage, use `download(String,File,Callback)` method.
+### Downloading files from storage
+To download a file from clorabase storage, use the `download(String,File,Callback)` method.
 ```java
-ClorabaseStorage.download(projectId, "filename",downloadDir, new ClorabaseStorageCallback() {  
+storage.download(projectId, "filename",downloadDir, new ClorabaseStorageCallback() {  
     @Override  
   public void onFailed(@NonNull Exception e) {  
         // check the error  
@@ -56,10 +61,10 @@ ClorabaseStorage.download(projectId, "filename",downloadDir, new ClorabaseStorag
 ```
 
 
-### Deleting file
+### Delete file
 Deleting file is also as easy as pie.
 ```java
-ClorabaseStorage.delete(projectId, "filename", new ClorabaseStorageCallback() {  
+storage.delete("filename", new ClorabaseStorageCallback() {  
     @Override  
   public void onFailed(@NonNull Exception e) {  
         // check the error  
@@ -77,9 +82,9 @@ ClorabaseStorage.delete(projectId, "filename", new ClorabaseStorageCallback() {
 });
 ```
 
-## Listing all the files.
+## List all the files.
 ```java
-ClorabaseStorage.list(projectId, iterator -> {  
+storage.list(iterator -> {  
     while (iterator.hasNext()) {  
         ClorabaseStorage.File[] files = iterator.next();  
   // do something with files  
