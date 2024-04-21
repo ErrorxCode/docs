@@ -1,3 +1,18 @@
+<p align="center"><img alt="clorographDB" height="300" src="/clorabase/favicon.png"></p>
+<p align="center">
+  <img src="https://img.shields.io/github/license/ErrorxCode/Clorabase?style=for-the-badge">
+  <img src="https://img.shields.io/github/stars/ErrorxCode/Clorabase?style=for-the-badge">
+  <img src="https://img.shields.io/github/issues/ErrorxCode/Clorabase?color=red&style=for-the-badge">
+  <img src="https://img.shields.io/github/forks/ErrorxCode/Clorabase?color=teal&style=for-the-badge">
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Author-Rahil--Khan-cyan?style=flat-square">
+  <img src="https://img.shields.io/badge/Open%20Source-Yes-cyan?style=flat-square">
+  <img src="https://img.shields.io/badge/Written%20In-Java-cyan?style=flat-square">
+</p>
+
+
 # Clorabase
 > Turn your GitHub into a backend
 
@@ -31,9 +46,10 @@ allprojects {
 In module **build.gradle**
 ```
 	dependencies {
-	               implementation 'com.github.Clorabase:Clorabase:Tag'
+	               implementation 'com.github.Clorabase:Clorabase:v3.0.0'
 	}
 ```
+
 [![](https://jitpack.io/v/Clorabase/Clorabase.svg)](https://jitpack.io/#Clorabase/Clorabase)
 
 
