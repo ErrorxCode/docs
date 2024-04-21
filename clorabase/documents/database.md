@@ -9,7 +9,8 @@ Clorabase Database is an open-source, flexible, serverless database for Android 
 
 ## ClorastoreDB
 This database is implemented from [ClorastoreDB](https://github.com/Clorabase/ClorastoreDB) offline version. See its docs to understand the pattern of the database.
-Refer to [Wikipedia article](https://en.wikipedia.org/wiki/Document-oriented_database) to learn more about this.
+Refer to [Wikipedia article](https://en.wikipedia.org/wiki/Document-oriented_database) to learn more about this. However, the version of this in the SDK is little different.
+
 
 ### Initializing the class.
 Get the instance of the database like this,
@@ -112,6 +113,7 @@ db.collection("users").query(data -> data.get("name").toString().startsWith("a")
 **Note** : You need to manually check for the `return` value of `data.get("age")`, as it could be null if some document does not contain that value.
 
 ## ClorographDB
+This is another nosql database from clorabase. [Clorograph](https://github.com/Clorabase/ClorographDB) is a graph database that stores data in form of graphs and trees. The data stored is a plain java object POJO. To know about this database, check the [wiki](https://github.com/Clorabase/ClorographDB/wiki)
 
 First off all, read about the **Graphs & trees**  [here](https://github.com/Clorabase/ClorographDB/wiki)
 
