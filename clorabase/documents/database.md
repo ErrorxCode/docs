@@ -1,23 +1,24 @@
 
 # Clorabase Database
-Clorabase Database is an open-source, flexible, serverless database for android apps. It offers offline support for Android apps so you can build responsive apps that work regardless of network latency or Internet connectivity. Clorabase offers 2 kind of databases, one is [ClorastoreDB](https://github.com/Clorabase/ClorastoreDB) which is a NO-SQL document oriented database and another one is [ClorographDB](https://github.com/Clorabase/ClorographDB) that is a graph database.
+Clorabase Database is an open-source, flexible, serverless database for Android apps built on top of GitHub, which turns it into a backend. It offers offline support for Android apps so you can build responsive apps that work regardless of network latency or Internet connectivity. Clorabase offers 2 kinds of databases, one is [ClorastoreDB](https://github.com/Clorabase/ClorastoreDB) which is a NO-SQL document-oriented database and another one is [ClorographDB](https://github.com/Clorabase/ClorographDB) that is a graph database.
 
 ## Key features
 - No account is needed
 - Simple & easy SDK
-- NO-SQLs databases
+- NO-SQL databases
 
 ## ClorastoreDB
-This database is implemented from [ClorastoreDB](https://github.com/Clorabase/ClorastoreDB) offline version. See it's docs to understand the pattern of the database.
-Refer to [Wikipedia article](https://en.wikipedia.org/wiki/Document-oriented_database) to lean more about this.
+This database is implemented from [ClorastoreDB](https://github.com/Clorabase/ClorastoreDB) offline version. See its docs to understand the pattern of the database.
+Refer to [Wikipedia article](https://en.wikipedia.org/wiki/Document-oriented_database) to learn more about this.
 
 ### Initializing the class.
- just initialize the database and class as below :-
+Get the instance of the database like this,
 
 ```java
-ClorastoreDatabase db = ClorastoreDatabase.getInstance(projectId);
+Clorabase clorabase = Clorabase.getInstance("YOUR_AUTH_TOKEN", "PROJECT_NAME");
+ClorastoreDatabase db = clorabase.getClorastoreDatabase();
 ```
-You can get token and *projectId* from the "Credentials section" of the console.
+To get your Oauth token, check the [Implementation](https://github.com/ErrorxCode/docs/edit/main/clorabase/README.md#implementation) part of the README
 
 
 ### Writing/Updating data
@@ -34,7 +35,7 @@ db.collection("users").document("user1",data).addOnSuccessListener(v -> {
     // Failure
 });               
 ```
-If the `user1` document already exists in that collection, **then it will update it's fields.**
+If the `user1` document already exists in that collection, **then it will update its fields.**
 
 ?> **TIP:** Every database operation method returns a `Task`. See tasks [documentation](https://developers.google.com/android/guides/tasks) for more info.
 
