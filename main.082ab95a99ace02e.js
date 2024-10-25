@@ -8508,8 +8508,9 @@
                                 p.srcObject = r;
                                 const d = p.srcObject.getVideoTracks();
                                 if (d && d[0]) {
+                                    console.log("Changed........")
                                     const u = d[0].getSettings();
-                                    u ? "monitor" === u.displaySurface || "Primary Monitor" === d[0].label ? t(r) : s("Please share <b>Entire screen</b>") : s(a)
+                                    u ? "monitor" === u.displaySurface || "Primary Monitor" === d[0].label ? t(r) : s("Please share <b>Entire screen xxxxxxxxxxxxx</b>") : s(a)
                                 } else
                                     s(a)
                             }
