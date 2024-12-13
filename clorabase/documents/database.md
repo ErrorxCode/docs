@@ -9,15 +9,14 @@ Clorabase Database is an open-source, flexible, serverless database for Android 
 
 ## ClorastoreDB
 This database is implemented from [ClorastoreDB](https://github.com/Clorabase/ClorastoreDB) offline version. See its docs to understand the pattern of the database.
-Refer to [Wikipedia article](https://en.wikipedia.org/wiki/Document-oriented_database) to learn more about this. However, the version of this in the SDK is little different.
+Refer to [Wikipedia article](https://en.wikipedia.org/wiki/Document-oriented_database) to learn more about this.
 
 
-### Initializing the class.
-Get the instance of the database like this,
+### Get the root collection of the database
 
 ```java
-Clorabase clorabase = Clorabase.getInstance("YOUR_AUTH_TOKEN", "PROJECT_NAME");
-ClorastoreDatabase db = clorabase.getClorastoreDatabase();
+Clorabase clorabase = Clorabase.getInstance(GITHUB_TOKEN, PROJECT_NAME);
+Collection root = clorabase.getClorastoreDatabase();
 ```
 To get your Oauth token, check the [Implementation](https://github.com/ErrorxCode/docs/edit/main/clorabase/README.md#implementation) part of the README
 
@@ -30,15 +29,14 @@ data.put("name","John");
 data.put("age",25);
 data.put("is_married",false);
 
-db.collection("users").document("user1",data).addOnSuccessListener(v -> {
-    // Success
-}).addOnFailureListener(e -> {
-    // Failure
-});               
+root.collection("users").document("user1").setData(data)
+        .addOnSuccessListener(unused -> System.out.println("Success"))
+        .addOnFailureListener(e -> System.out.println("Failed"));          
 ```
 If the `user1` document already exists in that collection, **then it will update its fields.**
 
-?> **TIP:** Every database operation method returns a `Task`. See tasks [documentation](https://developers.google.com/android/guides/tasks) for more info.
+> [!TIP]
+>Every database operation method returns a `Task`. See tasks [documentation](https://developers.google.com/android/guides/tasks) for more info.
 
 The structure created will be like this,
 
@@ -51,30 +49,19 @@ You can also have a collection inside a collection, but not a collection or docu
 ### Reading data
 To read data from database, use `getData()` method on the **document** where it was inserted.
 ```java
-db.collection("users").getData("user1").addOnSuccessListener(data -> {  
-    // here is the data  
-}).addOnFailureListener(exception -> {  
-    // something went wrong  
-});
+root.collection("users").document("user1").getData()
+        .addOnSuccessListener(System.out::println)
+        .addOnFailureListener(Throwable::printStackTrace);
 ```
 
 ### Deleting data
 To delete a document or collection, go to its parent collection and call `delete()`method. To delete a field in a node, just put its value to `null`
 ```java
-db.delete("users").addOnSuccessListener(data -> {  
-    // here is the data  
-}).addOnFailureListener(exception -> {  
-    // something went wrong  
-});
+root.collection("users").delete("user1")
+        .addOnSuccessListener(System.out::println)
+        .addOnFailureListener(Throwable::printStackTrace);
 ```
-or
-```java
-db.delete("user1").addOnSuccessListener(data -> {  
-    // here is the data  
-}).addOnFailureListener(exception -> {  
-    // something went wrong  
-});
-```
+
 
 ### Querying data
 Querying data in **ClorastoreDB** is as easy as pie. You just have to pass a `Predicate` as a condition for querying data. The database will include every document for which the `Predicate` returns true.
@@ -101,59 +88,20 @@ Suppose if your structure is like this (*JSON representation of collection & it'
   ]
 }
 ```
-- To get all the users whose age is less then 30,
+- To get all the users whose age is greater then 18,
 ```java
-db.collection("users").query(data -> (int) data.get("age") < 30);
+root.collection("users").query().whereGreater("age",18)
 ```
 - To get users whose name start's with 'a'
 ```java
-db.collection("users").query(data -> data.get("name").toString().startsWith("a"));
+db.collection("users").query().where(data -> data.get("name").toString().startsWith("a"));
 ```
-
 **Note** : You need to manually check for the `return` value of `data.get("age")`, as it could be null if some document does not contain that value.
 
-## ClorographDB
-This is another nosql database from clorabase. [Clorograph](https://github.com/Clorabase/ClorographDB) is a graph database that stores data in form of graphs and trees. The data stored is a plain java object POJO. To know about this database, check the [wiki](https://github.com/Clorabase/ClorographDB/wiki)
-
-First off all, read about the **Graphs & trees**  [here](https://github.com/Clorabase/ClorographDB/wiki)
-
-- To create a graph or tree
+- To order data by a perticular field (Accending order)
 ```java
-RelationalGraph<Person> graph = new RelationalGraph<>();
-...
-...
-...
-db.createGraph(graph).addOnSuccessListener(createdGraph -> {  
-    // Graph created, must not be edited  
-}).addOnFailureListener(e -> {  
-    // Graph not created, check error  
-});
+root.collection("users").query().orderBy("age",20);
 ```
-*The similar method is for tree too.*
-
-- To update a graph/tree
-```java
-db.updateTree("treeName", new OnCompleteCallback<Tree<Person>>() {  
-    @Override  
-  public void onFetched(Tree<Person> fetched) {  
-        // update the graph here  
-  }  
-  
-    @Override  
-  public void onUpdated() {  
-        // if the graph was updated  
-  }  
-  
-    @Override  
-  public void onFailure(Exception e) {  
-        // if there was an error  
-  }  
-});
-```
-*The similar method is for graph too.*
-
-Read more about this database [here](https://github.com/Clorabase/ClorographDB/wiki/user-guide)
-
 
 
 _That's all that you need to know about the database._
