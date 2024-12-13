@@ -4,59 +4,59 @@ Storage for Clorabase is built for app developers who need to store and serve us
 ## Key features
 - Max file size is 2GB
 - Simple & easy SDK
+- Local Filesystem type framword
 - Unlimited storage & uploads
+- Stors files in hierarchy
 
-### Initialize the class
+### Get the root node
 ```java
-ClorabaseStorage storage = clorabase.getStorage();
+Clorabase clorabase = Clorabase.getInstance("token", "project");
+Node root = clorabase.getClorabaseStorage();
 ```
 then with this object, we can:
 
 ### Upload file to storage
-To upload a file to the storage, use the `upload(String,File,Callback)` method.
+To upload a file to a root node, use the `upload(String,InputStream,Callback)` method.
 
 ?> Tip: Take care of the read/write permission, specually if you are targeting higher android versions
 
 ```java
-storage.upload(projectId, file, new ClorabaseStorageCallback() {  
-    @Override  
-  public void onFailed(@NonNull Exception e) {  
-        // check the error  
-  }  
-  
-    @Override  
-  public void onProgress(int percent) {  
-        // progress in percentage  
-  }  
-  
-    @Override  
-  public void onComplete() {  
-        // file uploaded  
-  }  
+root.node("photos").upload("pfp.png", in, new ClorabaseStorageCallback() {
+    @Override
+    public void onFailed(@NonNull Exception e) {
+        e.printStackTrace();
+    }
+    @Override
+    public void onProgress(int percent) {
+        System.out.println(percent);
+    }
+    @Override
+    public void onComplete() {
+        System.out.println("Comepleted");
+    }
 });
 ```
-?> **Pro Tip**: To organize your files, you can save each file name in the database with the respective collection and documents. 
-For example, If I wanna save all images from `user1`. I will create a list in a document in database, that will hold referenfce (name/download_link) of the images uploaded by this user.
-Then you can retrieve them later.
+?> **Pro Tip**: To organize your files like database collections, reffered as node. A node may contains files and other nodes too.
+
+For example, If I wanna save all images from `user1`. I will create a node for "user1" in storage, that will have the images uploaded by this user.
+
 
 ### Downloading files from storage
 To download a file from clorabase storage, use the `download(String,File,Callback)` method.
 ```java
-storage.download(projectId, "filename",downloadDir, new ClorabaseStorageCallback() {  
-    @Override  
-  public void onFailed(@NonNull Exception e) {  
-        // check the error  
-  }  
-  
-    @Override  
-  public void onProgress(int percent) {  
-        // progress in percentage  
-  }  
-  
-    @Override  
-  public void onComplete() {  
-        // file uploaded  
-  }  
+root.node("basics").download("pfp.png", out, new ClorabaseStorageCallback() {
+    @Override
+    public void onFailed(@NonNull Exception e) {
+        e.printStackTrace();
+    }
+    @Override
+    public void onProgress(int percent) {
+        System.out.println(percent);
+    }
+    @Override
+    public void onComplete() {
+        System.out.println("Comepleted");
+    }
 });
 ```
 
@@ -64,34 +64,26 @@ storage.download(projectId, "filename",downloadDir, new ClorabaseStorageCallback
 ### Delete file
 Deleting file is also as easy as pie.
 ```java
-storage.delete("filename", new ClorabaseStorageCallback() {  
-    @Override  
-  public void onFailed(@NonNull Exception e) {  
-        // check the error  
-  }  
-  
-    @Override  
-  public void onProgress(int percent) {  
-        // will not be called in this case  
-  }  
-  
-    @Override  
-  public void onComplete() {  
-        // file deleted  
-  }  
+root.node("user1").node("photos").delete("googleSearch.png", new ClorabaseStorageCallback() {
+    @Override
+    public void onFailed(@NonNull Exception e) {
+        e.printStackTrace();
+    }
+    @Override
+    public void onProgress(int percent) {
+        System.out.println(percent);
+    }
+    @Override
+    public void onComplete() {
+        System.out.println("Comepleted");
+    }
 });
 ```
 
 ## List all the files.
 ```java
-storage.list(iterator -> {  
-    while (iterator.hasNext()) {  
-        ClorabaseStorage.File[] files = iterator.next();  
-  // do something with files  
-  }  
-});
+root.node("photos").list().forEach(System.out::println);
 ```
-The `iterator` is a paginated iterator which return a single page of files in every request made using `next()` call.
 
 
 #### That's all what you need to know about the storage :)
