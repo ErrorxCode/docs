@@ -35,7 +35,7 @@ root.collection("users").document("user1").setData(data)
 ```
 If the `user1` document already exists in that collection, **then it will update its fields.**
 
-> [!TIP]
+?> **Tip** 
 >Every database operation method returns a `Task`. See tasks [documentation](https://developers.google.com/android/guides/tasks) for more info.
 
 The structure created will be like this,
